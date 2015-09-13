@@ -33,7 +33,6 @@
 		22324BCD1BA57CD000D278A9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22324BCE1BA57CD000D278A9 /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
 		22324BCF1BA57CD000D278A9 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
-		22324BD11BA57CD000D278A9 /* CosmosNavigation-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CosmosNavigation-Prefix.pch"; sourceTree = "<group>"; };
 		22324BD21BA57CD000D278A9 /* InstrumentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentCategory.h; sourceTree = "<group>"; };
 		22324BD31BA57CD000D278A9 /* InstrumentCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentCategory.m; sourceTree = "<group>"; };
 		22324BD41BA57CD000D278A9 /* StackNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackNavigationController.h; sourceTree = "<group>"; };
@@ -109,7 +108,6 @@
 		225774E51BA57C1900F8DE72 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				22324BD11BA57CD000D278A9 /* CosmosNavigation-Prefix.pch */,
 				225774E61BA57C1900F8DE72 /* Info.plist */,
 				225774E71BA57C1900F8DE72 /* main.m */,
 			);
