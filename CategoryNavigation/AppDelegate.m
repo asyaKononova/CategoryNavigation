@@ -7,39 +7,102 @@
 //
 
 #import "AppDelegate.h"
-
-@interface AppDelegate ()
-
-@end
+#import "CategoryViewController.h"
+#import "StackNavigationController.h"
+#import "InstrumentCategory.h"
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    StackNavigationController *nc = [[StackNavigationController alloc] initWithRootViewController:[[CategoryViewController alloc] initWithCaregories:[self instrumentTree]]];
+    nc.minTopControllerWidth = 170;
+    self.window.rootViewController = nc;//[[UINavigationController alloc] initWithRootViewController:nc];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (NSArray *)instrumentTree
+{
+    return @[[InstrumentCategory categoryWithName:@"Currencies"
+                                    subcategories:
+              [self subcategoryWithName:@"AAPL"
+                          subcategories:
+               [self subcategoryWithName:@"ADDYY"
+                           subcategories:
+                [self subcategoryWithName:@"AUD/CAD"
+                            subcategories:nil]]]],
+             [InstrumentCategory categoryWithName:@"Indices"
+                                    subcategories:
+              [self subcategoryWithName:@"IBM"
+                          subcategories:
+               [self subcategoryWithName:@"NVDA"
+                           subcategories:
+                [self subcategoryWithName:@"FSCO"
+                            subcategories:
+                 [self subcategoryWithName:@"GSCO"
+                             subcategories:
+                  [self subcategoryWithName:@"CPPP"
+                              subcategories:nil]]]]]],
+             [InstrumentCategory categoryWithName:@"Energy"
+                                    subcategories:
+              [self subcategoryWithName:@"MSFT"
+                          subcategories:
+               [self subcategoryWithName:@"MMM"
+                           subcategories:
+                [self subcategoryWithName:@"VOD"
+                            subcategories:nil]]]],
+             [InstrumentCategory categoryWithName:@"Commodities"
+                                    subcategories:
+              [self subcategoryWithName:@"PFE"
+                          subcategories:
+               [self subcategoryWithName:@"PLN/CZK"
+                           subcategories:
+                [self subcategoryWithName:@"CPB"
+                            subcategories:
+                 [self subcategoryWithName:@"VDCB"
+                             subcategories:
+                  [self subcategoryWithName:@"CBOD"
+                              subcategories:nil]]]]]],
+             [InstrumentCategory categoryWithName:@"Metals"
+                                    subcategories:
+              [self subcategoryWithName:@"USD/JPY"
+                          subcategories:
+               [self subcategoryWithName:@"USD/CAD"
+                           subcategories:
+                [self subcategoryWithName:@"USD/HUF"
+                            subcategories:
+                 [self subcategoryWithName:@"USD/HUF"
+                             subcategories:
+                  [self subcategoryWithName:@"USD/HUF"
+                              subcategories:nil]]]]]],
+             [InstrumentCategory categoryWithName:@"Shares"
+                                    subcategories:
+              [self subcategoryWithName:@"ZAR/JPY"
+                          subcategories:
+               [self subcategoryWithName:@"AUD/NZD"
+                           subcategories:
+                [self subcategoryWithName:@"CZK/HUD"
+                            subcategories:
+                 [self subcategoryWithName:@"USD/HUF"
+                             subcategories:
+                  [self subcategoryWithName:@"USD/HUF"
+                              subcategories:nil]]]]]]];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (NSArray *)subcategoryWithName:(NSString *)name subcategories:(NSArray *)subcategories
+{
+    NSMutableArray *subcategory = [NSMutableArray array];
+    for (int i = 0; i < 20; ++i) {
+        NSString *subcategoryName = [NSString stringWithFormat:@"%@ %d", name, i + 1];
+        [subcategory addObject:[InstrumentCategory categoryWithName:subcategoryName subcategories:subcategory]];
+    }
+    return subcategory;
 }
 
 @end

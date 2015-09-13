@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CategoryViewController.h
 //  CategoryNavigation
 //
 //  Created by Anastasia Kononova on 9/13/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface CategoryViewController : UITableViewController
 
+- (id)initWithCaregories:(NSArray *)categories;
 
 @end
-
